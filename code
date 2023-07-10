@@ -1,0 +1,27 @@
+def encode_message(input_message):
+    # Remove spaces from the input message
+    input_message = input_message.replace(" ", "")
+
+    # Calculate the number of rows and columns for the rectangle
+    num_rows = 9
+    num_cols = (len(input_message) // num_rows) + 1
+
+    # Pad the message with extra characters if necessary
+    input_message += (num_rows * num_cols - len(input_message)) * " "
+
+    # Create the rectangle by reading the message column-wise
+    rectangle = [input_message[i::num_cols] for i in range(num_cols)]
+
+    # Join the rectangle lines to form the encoded message
+    encoded_message = "\n".join(rectangle)
+
+    return encoded_message
+
+
+# Get the input statement from the user
+input_message = input("Enter the input statement: ")
+
+# Encode the message
+encoded_message = encode_message(input_message)
+print("Encoded Message:")
+print(encoded_message)
